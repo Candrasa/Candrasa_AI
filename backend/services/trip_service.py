@@ -23,3 +23,13 @@ def get_recommended_place(budget):
         return "Recommended place: Kyoto for standard travelers, travel by train."
     else:
         return "Recommended place: Maldives for luxury travelers, travel by plane."
+
+def get_travel_season(month):
+    if month in [12, 1, 2]:
+        return "Winter, Peak Season"
+    elif month in [3, 4, 5]:
+        return "Spring, Regular Season"
+    elif month in [6, 7, 8]:
+        return "Summer, Holiday Season"
+    else:
+        return "Autumn, Season"

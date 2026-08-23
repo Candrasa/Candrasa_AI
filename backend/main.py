@@ -1,4 +1,4 @@
-from services.trip_service import get_trip_category, get_recommended_place, daily_budget
+from services.trip_service import get_trip_category, get_recommended_place, daily_budget, get_travel_season
 
 
 def print_trip_summary(
@@ -9,7 +9,9 @@ def print_trip_summary(
         hotel_cost,
         transportation_cost,
         food_cost,
-        miscellaneous_cost
+        miscellaneous_cost,
+        travel_month,
+        season,
 ):
     total_estimated_cost = (
         hotel_cost +
@@ -28,6 +30,8 @@ def print_trip_summary(
     print(f"Hotel Cost: ${hotel_cost}")
     print(f"Transportation Cost: ${transportation_cost}")
     print(f"Food Cost: ${food_cost}")
+    print(f"Travel Month: {travel_month}")
+    print(f"Season: {season}")
     print(f"Miscellaneous Cost: ${miscellaneous_cost}")
     print(f"Total Estimated Cost: ${total_estimated_cost}")
 
@@ -45,6 +49,8 @@ def main():
     hotel_cost = float(input("Hotel Cost: "))
     transportation_cost = float(input("Transportation Cost: "))
     food_cost = float(input("Food Cost: "))
+    travel_month = int(input("Travel Month (1-12): "))
+    season = get_travel_season(travel_month)
     miscellaneous_cost = float(input("Miscellaneous Cost: "))
 
     category = get_trip_category(budget)
@@ -61,6 +67,8 @@ def main():
     print(f"Category: {category}")
     print(f"Daily Budget: ${daily_cost:.2f}")
     print(f"{category} . ${daily_cost:.2f} per day")
+    print(f"Month: {travel_month}")
+    print(f"Travel Season: {season}")
     print(get_recommended_place(budget))
 
 
