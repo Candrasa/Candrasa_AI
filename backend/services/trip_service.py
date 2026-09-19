@@ -12,8 +12,14 @@ def get_trip_category(budget):
 
 
 # Arithmetic operators: + - * / //
-def daily_budget(budget, days):
+def calculate_daily_budget(budget, days):
+    if days <= 0:
+        raise ValueError("days must be greater than 0")
     return budget / days
+
+
+def daily_budget(budget, days):
+    return calculate_daily_budget(budget, days)
 
 
 def get_recommended_place(budget):
@@ -29,11 +35,14 @@ def get_recommended_place(budget):
         return "Recommended place: Maldives for luxury travelers, travel by plane."
 
 def get_travel_season(month):
-    if month in ["December", "January", "February"]:
+    month_name = month.strip().title()
+    if month_name in ["December", "January", "February"]:
         return "Winter, Peak Season"
-    elif month in ["March", "April", "May"]:
+    elif month_name in ["March", "April", "May"]:
         return "Spring, Regular Season"
-    elif month in ["June", "July", "August"]:
+    elif month_name in ["June", "July", "August"]:
         return "Summer, Holiday Season"
+    elif month_name in ["September", "October", "November"]:
+        return "Autumn, Regular Season"
     else:
-        return "Autumn, Season"
+        return "Invalid month. Please provide a valid month name (e.g., January, February, etc.)."
